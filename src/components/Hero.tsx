@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 const Hero = () => {
-  const [imgSrc, setImgSrc] = useState("src/assets/2.jpg");
+  const [imgSrc, setImgSrc] = useState("public/2.jpg");
 
   return (
     <section
@@ -12,8 +12,8 @@ const Hero = () => {
       <div className="flex flex-col md:flex-row items-center gap-10 w-full max-w-5xl px-4">
         <div
           className="group w-40 h-40 md:w-56 md:h-56 bg-white rounded-2xl shadow-lg flex items-center justify-center overflow-hidden border-4 border-gray-200 mb-6 md:mb-0"
-          onMouseEnter={() => setImgSrc("src/assets/3.jpg")}
-          onMouseLeave={() => setImgSrc("src/assets/2.jpg")}
+          onMouseEnter={() => setImgSrc("public/3.jpg")}
+          onMouseLeave={() => setImgSrc("public/2.jpg")}
         >
          
           <span className="text-gray-400 text-lg w-full h-full">
