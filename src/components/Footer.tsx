@@ -10,7 +10,7 @@ const Footer = () => {
             href="https://github.com/teyorkk"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-gray-900 text-2xl transition"
+            className="text-black hover:text-gray-700 text-2xl transition"
           >
             <FaGithub />
           </a>
@@ -18,7 +18,7 @@ const Footer = () => {
             href="https://www.facebook.com/AtienzaTheo"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-blue-900 text-2xl transition"
+            className="text-black hover:text-gray-700 text-2xl transition"
           >
             <FaFacebook />
           </a>
@@ -26,7 +26,7 @@ const Footer = () => {
             href="https://www.instagram.com/teyorkk/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-blue-700 text-2xl transition"
+            className="text-black hover:text-gray-700 text-2xl transition"
           >
             <FaInstagram />
           </a>
@@ -34,7 +34,7 @@ const Footer = () => {
             href="https://letterboxd.com/teyorkk/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-blue-700 text-2xl transition"
+            className="text-black hover:text-gray-700 text-2xl transition"
           >
             <FaLetterboxd />
           </a>

@@ -1,5 +1,4 @@
-
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 interface TypewriterTextProps {
@@ -47,7 +46,6 @@ const Hero = () => {
           onMouseEnter={() => setImgSrc("/3.jpg")}
           onMouseLeave={() => setImgSrc("/2.jpg")}
         >
-         
           <span className="text-gray-400 text-lg w-full h-full">
             <img
               src={imgSrc}
@@ -56,15 +54,17 @@ const Hero = () => {
             />
           </span>
         </div>
-     
+
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-4">
             Hi, I'm <span className="text-gray-700">Moises</span>
           </h1>
 
           <TypewriterText
-            text={"I'm a passionate web developer specializing in building modern, responsive, and engaging web applications."}
-            className="text-lg md:text-xl text-gray-700 mb-6"
+            text={
+              "I'm a passionate web developer specializing in building modern, responsive, and engaging web applications."
+            }
+            className="text-lg md:text-xl text-gray-700 mb-6 min-h-[56px]"
           />
 
           <a

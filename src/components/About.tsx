@@ -28,7 +28,7 @@ export const About = () => {
               <ul className="list-disc list-inside space-y-1 text-gray-700">
                 <li>Frontend Development (React, TypeScript, Tailwind CSS)</li>
                 <li>Responsive & Modern UI Design</li>
-                <li>JavaScript & ES6+</li>
+                <li>JavaScript</li>
                 <li>Version Control (Git & GitHub)</li>
               </ul>
             </div>

@@ -2,20 +2,20 @@ const projects = [
   {
     title: "Portfolio Website",
     description: "A modern portfolio built with React and Tailwind CSS.",
-    image: "/port.png", 
-    link: "#",
+    image: "/port.png",
+    link: "https://github.com/teyorkk/portfolio",
   },
   {
     title: "Expense Tracker",
     description: "A mobile expense tracker app using flutter.",
     image: "/expense.jpg",
-    link: "#",
+    link: "https://github.com/teyorkk/expense_tracker_flutter",
   },
   {
     title: "Cineverse",
     description: "A movie review logging website.",
     image: "/cineverse.png",
-    link: "#",
+    link: "https://github.com/teyorkk/cineverse",
   },
 ];
 
@@ -31,7 +31,7 @@ const Project = () => {
             <a
               key={project.title}
               href={project.link}
-              className="block bg-gray-100 rounded-xl shadow hover:shadow-lg transition overflow-hidden group border border-gray-200"
+              className="block bg-gray-100 rounded-xl shadow hover:shadow-lg transition overflow-hidden group border border-gray-200 transform hover:scale-105 duration-300"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -39,7 +39,7 @@ const Project = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  className="w-full h-full object-cover "
                 />
               </div>
               <div className="p-5">

@@ -47,7 +47,7 @@ const Skills = () => {
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
           Skills
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <article className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {skills.map((skill) => (
             <div
               key={skill.name}
@@ -61,7 +61,7 @@ const Skills = () => {
               </span>
             </div>
           ))}
-        </div>
+        </article>
       </div>
     </section>
   );
