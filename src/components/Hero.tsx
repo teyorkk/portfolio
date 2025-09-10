@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
 interface TypewriterTextProps {
@@ -18,7 +18,6 @@ function TypewriterText({ text, className }: TypewriterTextProps) {
       }, 35);
       return () => clearTimeout(timeout);
     } else {
-      // Pause, then reset for loop
       const timeout = setTimeout(() => {
         setDisplayed("");
         setIndex(0);
@@ -57,12 +56,12 @@ const Hero = () => {
             />
           </span>
         </div>
-        {/* Intro Text */}
+     
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-4">
             Hi, I'm <span className="text-gray-700">Moises</span>
           </h1>
-          {/* Typewriter Animation */}
+
           <TypewriterText
             text={"I'm a passionate web developer specializing in building modern, responsive, and engaging web applications."}
             className="text-lg md:text-xl text-gray-700 mb-6"
