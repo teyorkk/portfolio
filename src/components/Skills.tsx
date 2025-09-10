@@ -37,6 +37,7 @@ const skills = [
   { name: "Git", icon: <FaGit className="text-orange-600" /> },
   { name: "Flutter", icon: <SiFlutter className="text-blue-400" /> },
   { name: "GitHub", icon: <FaGithub className="text-gray-800" /> },
+  
 ];
 
 const Skills = () => {

@@ -1,5 +1,38 @@
-import { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { FaArrowDown } from "react-icons/fa";
+
+interface TypewriterTextProps {
+  text: string;
+  className?: string;
+}
+
+function TypewriterText({ text, className }: TypewriterTextProps) {
+  const [displayed, setDisplayed] = useState("");
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayed((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }, 35);
+      return () => clearTimeout(timeout);
+    } else {
+      // Pause, then reset for loop
+      const timeout = setTimeout(() => {
+        setDisplayed("");
+        setIndex(0);
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text]);
+  return (
+    <p className={className}>
+      {displayed}
+      <span className="animate-pulse">|</span>
+    </p>
+  );
+}
 
 const Hero = () => {
   const [imgSrc, setImgSrc] = useState("/2.jpg");
@@ -29,10 +62,12 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-4">
             Hi, I'm <span className="text-gray-700">Moises</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 mb-6">
-            I'm a passionate web developer specializing in building modern,
-            responsive, and engaging web applications.
-          </p>
+          {/* Typewriter Animation */}
+          <TypewriterText
+            text={"I'm a passionate web developer specializing in building modern, responsive, and engaging web applications."}
+            className="text-lg md:text-xl text-gray-700 mb-6"
+          />
+
           <a
             href="#projects"
             className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold shadow hover:bg-gray-900 transition"

@@ -1,4 +1,5 @@
 import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaLetterboxd } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -28,6 +29,14 @@ const Footer = () => {
             className="text-black hover:text-blue-700 text-2xl transition"
           >
             <FaInstagram />
+          </a>
+          <a
+            href="https://letterboxd.com/teyorkk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-blue-700 text-2xl transition"
+          >
+            <FaLetterboxd />
           </a>
         </div>
         <div className="text-gray-600 text-sm mb-1">
