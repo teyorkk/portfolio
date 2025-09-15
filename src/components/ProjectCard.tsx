@@ -1,0 +1,75 @@
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  tags?: string[];
+}
+
+const hoverClassesForTag = (tag: string) => {
+  const key = tag.trim().toLowerCase();
+  switch (key) {
+    case "sqlite":
+      return "hover:bg-cyan-600 hover:border-cyan-600 hover:text-white";
+    case "react":
+      return "hover:bg-cyan-600 hover:border-cyan-600 hover:text-white";
+    case "tailwind":
+    case "tailwind css":
+      return "hover:bg-sky-600 hover:border-sky-600 hover:text-white";
+    case "flutter":
+      return "hover:bg-blue-600 hover:border-blue-600 hover:text-white";
+    case "mysql":
+      return "hover:bg-orange-500 hover:border-orange-500 hover:text-white";
+    case "php":
+      return "hover:bg-indigo-600 hover:border-indigo-600 hover:text-white";
+    default:
+      return "hover:bg-gray-800 hover:border-gray-800 hover:text-white";
+  }
+};
+
+const ProjectCard = ({
+  title,
+  description,
+  image,
+  link,
+  tags = [],
+}: ProjectCardProps) => {
+  return (
+    <a
+      href={link}
+      className="flex flex-col bg-gray-100 rounded-xl shadow hover:shadow-lg transition overflow-hidden group border border-gray-200 transform hover:scale-105 duration-300 h-full"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <div className="bg-white overflow-hidden">
+        <div className="relative w-full" style={{ paddingTop: "52%" }}>
+          <img
+            src={image}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+      </div>
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-xl font-semibold mb-2 text-gray-900">{title}</h3>
+        <p className="text-gray-600 text-md mb-3 flex-1">{description}</p>
+        {tags.length > 0 && (
+          <div className="mt-1 flex flex-wrap gap-2">
+            {tags.map((t) => (
+              <span
+                key={t}
+                className={`px-2 py-1 text-xs rounded-full bg-white border border-gray-200 text-gray-700 transition-colors duration-200 ${hoverClassesForTag(
+                  t
+                )}`}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </a>
+  );
+};
+
+export default ProjectCard;

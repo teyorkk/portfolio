@@ -27,7 +27,7 @@ export const Header = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="hover:underline transition-transform"
+                className="relative inline-block px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
               >
                 {link.label}
               </a>
@@ -64,7 +64,7 @@ export const Header = () => {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="block py-2 hover:underline transition-transform"
+                className="relative block py-2 px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -94,7 +94,7 @@ export const Header = () => {
           <li key={link.href}>
             <a
               href={link.href}
-              className="block py-2 hover:text-black transition"
+              className="relative block py-2 px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
