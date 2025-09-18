@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaCookieBite } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -12,6 +12,47 @@ const navLinks = [
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState<string>("#hero");
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((n) => document.querySelector(n.href) as HTMLElement | null)
+      .filter((el): el is HTMLElement => !!el);
+
+    const updateActive = () => {
+      if (!sections.length) return;
+      const viewportCenter = window.innerHeight / 2;
+      let bestId = active;
+      let bestDist = Number.POSITIVE_INFINITY;
+      for (const sec of sections) {
+        const rect = sec.getBoundingClientRect();
+        // Distance from section center to viewport center
+        const dist = Math.abs(rect.top + rect.height / 2 - viewportCenter);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestId = `#${sec.id}`;
+        }
+      }
+      setActive(bestId);
+    };
+
+    const onScrollOrResize = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(updateActive);
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    // Initial
+    updateActive();
+
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
     <header className="w-full bg-white shadow-md sticky top-0 z-50">
@@ -23,16 +64,27 @@ export const Header = () => {
         </div>
         {/* Desktop Nav */}
         <ul className="hidden md:flex gap-6 text-gray-800 font-medium">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="relative inline-block px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = active === link.href;
+            const base =
+              "relative inline-block px-1 transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-black after:transition-all after:duration-200";
+            const cls = `${base} ${
+              isActive
+                ? "text-black after:w-full"
+                : "text-gray-800 hover:text-black after:w-0 hover:after:w-full"
+            }`;
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={cls}
+                  onClick={() => setActive(link.href)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Hamburger Icon (only when menu is closed) */}
@@ -60,17 +112,30 @@ export const Header = () => {
               <FaTimes />
             </button>
           </li>
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="relative block py-2 px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = active === link.href;
+            const base =
+              "relative block py-2 px-1 transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-black after:transition-all after:duration-200";
+            const cls = `${base} ${
+              isActive
+                ? "text-black after:w-full"
+                : "text-gray-800 hover:text-black after:w-0 hover:after:w-full"
+            }`;
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={cls}
+                  onClick={() => {
+                    setActive(link.href);
+                    setMenuOpen(false);
+                  }}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
       <ul
@@ -90,17 +155,30 @@ export const Header = () => {
             <FaTimes />
           </button>
         </li>
-        {navLinks.map((link) => (
-          <li key={link.href}>
-            <a
-              href={link.href}
-              className="relative block py-2 px-1 text-gray-800 hover:text-black transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-200 hover:after:w-full"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = active === link.href;
+          const base =
+            "relative block py-2 px-1 transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-black after:transition-all after:duration-200";
+          const cls = `${base} ${
+            isActive
+              ? "text-black after:w-full"
+              : "text-gray-800 hover:text-black after:w-0 hover:after:w-full"
+          }`;
+          return (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={cls}
+                onClick={() => {
+                  setActive(link.href);
+                  setMenuOpen(false);
+                }}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
     </header>
   );

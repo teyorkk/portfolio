@@ -12,6 +12,27 @@ dist
 dist-ssr
 *.local
 
+# Env files (keep example unignored)
+.env
+.env.*
+!.env.example
+
+# Vite cache
+.vite
+node_modules/.vite
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage
+
+# Lint cache
+.eslintcache
+
+# OS files
+Thumbs.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +43,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Deployment
+.vercel/
