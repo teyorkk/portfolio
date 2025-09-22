@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import AccentBar from "./AccentBar";
 
 interface SkillCardProps {
   icon: ReactNode;
@@ -9,8 +10,9 @@ interface SkillCardProps {
 const SkillCard = ({ icon, name, className = "" }: SkillCardProps) => {
   return (
     <div
-      className={`flex flex-col items-center bg-gray-100 rounded-2xl shadow-xl border border-gray-200 p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${className}`}
+      className={`relative flex flex-col overflow-hidden items-center bg-gray-100 rounded-2xl shadow-xl border border-gray-200 p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${className}`}
     >
+      <AccentBar className="left-1 right-1 h-0.5 rounded-full" />
       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4 shadow-inner">
         <span className="text-4xl">{icon}</span>
       </div>

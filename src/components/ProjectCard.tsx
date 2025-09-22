@@ -1,3 +1,4 @@
+import AccentBar from "./AccentBar";
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -37,10 +38,12 @@ const ProjectCard = ({
   return (
     <a
       href={link}
-      className="flex flex-col bg-gray-100 rounded-xl shadow hover:shadow-lg transition overflow-hidden group border border-gray-200 transform hover:scale-105 duration-300 h-full"
+      className="relative flex flex-col bg-gray-100 rounded-xl shadow hover:shadow-lg transition overflow-hidden group border border-gray-200 transform hover:scale-105 duration-300 h-full"
       target="_blank"
       rel="noopener noreferrer"
     >
+      {/* Accent */}
+      <AccentBar className="z-10" />
       <div className="bg-white overflow-hidden">
         <div className="relative w-full" style={{ paddingTop: "52%" }}>
           <img
