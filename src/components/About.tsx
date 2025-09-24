@@ -1,6 +1,6 @@
 import Reveal from "./Reveal";
 import AccentBar from "./AccentBar";
-import { FaHeart, FaFilm, FaMusic, FaExternalLinkAlt } from "react-icons/fa";
+import { FaHeart, FaMusic, FaExternalLinkAlt } from "react-icons/fa";
 import { getTrack } from "../lib/last-fm";
 import type { Track } from "../lib/last-fm";
 import { useEffect, useState } from "react";
