@@ -1,4 +1,4 @@
-import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaFacebook, FaInstagram, FaLastfm } from "react-icons/fa";
 import { SiLetterboxd } from "react-icons/si";
 import Reveal from "./Reveal";
 
@@ -39,6 +39,14 @@ const Footer = () => {
               className="text-black hover:text-gray-700 text-2xl transition"
             >
               <SiLetterboxd />
+            </a>
+            <a
+              href="https://www.last.fm/user/Theomaczz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-gray-700 text-2xl transition"
+            >
+              <FaLastfm />
             </a>
           </div>
           <div className="text-gray-600 text-sm mb-1">

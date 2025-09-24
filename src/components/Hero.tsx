@@ -53,7 +53,6 @@ const Hero = () => {
       el.style.setProperty("--mx", `${x}%`);
       el.style.setProperty("--my", `${y}%`);
 
-      // Update magnifier lens to zoom actual image
       const lens = lensRef.current;
       if (lens) {
         const lensRadius = Math.round(Math.min(rect.width, rect.height) * 0.18);
