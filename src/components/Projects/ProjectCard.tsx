@@ -1,4 +1,4 @@
-import AccentBar from "./AccentBar";
+import AccentBar from "../Ui/AccentBar";
 interface ProjectCardProps {
   title: string;
   description: string;

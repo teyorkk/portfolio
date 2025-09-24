@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import AccentBar from "./AccentBar";
+import AccentBar from "../Ui/AccentBar";
 
 export type Service = {
   title: string;

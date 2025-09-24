@@ -19,7 +19,7 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import SkillCard from "./SkillCard";
-import Reveal from "./Reveal";
+import Reveal from "../Ui/Reveal";
 import React, { useMemo, useState } from "react";
 
 type Category =

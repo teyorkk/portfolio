@@ -1,10 +1,10 @@
 import Hero from "./components/Hero";
 import { About } from "./components/About";
-import Skills from "./components/Skills";
-import Project from "./components/Project";
+import Skills from "./components/Skills/Skills";
+import Project from "./components/Projects/Project";
 import Contact from "./components/Contact";
-import BackgroundEffects from "./components/BackgroundEffects";
-import Services from "./components/Services";
+import BackgroundEffects from "./components/Ui/BackgroundEffects";
+import Services from "./components/Services/Services";
 
 function App() {
   return (

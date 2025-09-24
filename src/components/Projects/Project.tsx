@@ -1,5 +1,5 @@
 import ProjectCard from "./ProjectCard";
-import Reveal from "./Reveal";
+import Reveal from "../Ui/Reveal";
 const projects = [
   {
     title: "Portfolio Website",

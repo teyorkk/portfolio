@@ -1,6 +1,6 @@
 import { FaGithub, FaFacebook, FaInstagram, FaLastfm } from "react-icons/fa";
 import { SiLetterboxd } from "react-icons/si";
-import Reveal from "./Reveal";
+import Reveal from "./Ui/Reveal";
 
 const Footer = () => {
   return (

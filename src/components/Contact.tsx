@@ -1,4 +1,4 @@
-import Reveal from "./Reveal";
+import Reveal from "./Ui/Reveal";
 
 const Contact = () => {
   return (

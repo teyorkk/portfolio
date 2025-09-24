@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import Reveal from "./Reveal";
+import Reveal from "./Ui/Reveal";
 import { FaArrowDown } from "react-icons/fa";
 
 interface TypewriterTextProps {

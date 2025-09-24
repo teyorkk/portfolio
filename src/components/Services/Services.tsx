@@ -1,4 +1,4 @@
-import Reveal from "./Reveal";
+import Reveal from "../Ui/Reveal";
 import { FaReact, FaServer, FaDatabase } from "react-icons/fa";
 import ServiceCard, { type Service } from "./ServiceCard";
 
