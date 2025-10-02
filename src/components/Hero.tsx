@@ -6,7 +6,7 @@ import { FaArrowDown } from "react-icons/fa";
 const phrases = [
   "I build modern, responsive web apps.",
   "I love crafting accessible UI.",
-  "I integrate clean APIs & performant data layers.",
+  "I integrate clean APIs.",
 ];
 
 const Hero = () => {
