@@ -1,27 +1,19 @@
 import Reveal from "../Ui/Reveal";
 import { FaReact, FaServer, FaDatabase } from "react-icons/fa";
 import ServiceCard, { type Service } from "./ServiceCard";
+import servicesData from "../../data/services.json";
 
-const services: Service[] = [
-  {
-    title: "Frontend Development",
-    description:
-      "Building responsive, accessible, and modern UIs with React, TypeScript, and Tailwind CSS.",
-    icon: <FaReact className="text-cyan-500" />,
-  },
-  {
-    title: "Backend & APIs",
-    description:
-      "Designing and integrating RESTful APIs, authentication, and server logic.",
-    icon: <FaServer className="text-gray-800" />,
-  },
-  {
-    title: "Database Management",
-    description:
-      "Schema design, queries, and optimization for relational databases.",
-    icon: <FaDatabase className="text-blue-600" />,
-  },
-];
+const iconMap: Record<string, React.ReactNode> = {
+  react: <FaReact className="text-cyan-500" />,
+  server: <FaServer className="text-gray-800" />,
+  database: <FaDatabase className="text-blue-600" />,
+};
+
+const services: Service[] = servicesData.map((s) => ({
+  title: s.title,
+  description: s.description,
+  icon: iconMap[s.icon] ?? <FaReact />,
+}));
 
 const Services = () => {
   return (

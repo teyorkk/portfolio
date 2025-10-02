@@ -8,8 +8,8 @@ import {
   FaPhp,
   FaGit,
 } from "react-icons/fa";
-import { SiFlutter } from "react-icons/si";
 import {
+  SiFlutter,
   SiSharp,
   SiSqlite,
   SiNextdotjs,
@@ -20,7 +20,8 @@ import {
 } from "react-icons/si";
 import SkillCard from "./SkillCard";
 import Reveal from "../Ui/Reveal";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import skillsData from "../../data/skills.json";
 
 type Category =
   | "All"
@@ -30,98 +31,30 @@ type Category =
   | "Tools"
   | "Mobile";
 
-const allSkills: {
-  name: string;
-  icon: React.ReactNode;
-  category: Exclude<Category, "All">;
-}[] = [
-  // Frontend
-  {
-    name: "CSS3",
-    icon: <FaCss3Alt className="text-blue-500" />,
-    category: "Frontend",
-  },
-  {
-    name: "HTML5",
-    icon: <FaHtml5 className="text-orange-500" />,
-    category: "Frontend",
-  },
-  {
-    name: "JavaScript",
-    icon: <FaJs className="text-yellow-400" />,
-    category: "Frontend",
-  },
-  {
-    name: "Nextjs",
-    icon: <SiNextdotjs className="text-black" />,
-    category: "Frontend",
-  },
-  {
-    name: "React",
-    icon: <FaReact className="text-cyan-400" />,
-    category: "Frontend",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-sky-400" />,
-    category: "Frontend",
-  },
-  {
-    name: "TypeScript",
-    icon: <SiTypescript className="text-blue-600" />,
-    category: "Frontend",
-  },
-  // Backend
-  {
-    name: "PHP",
-    icon: <FaPhp className="text-indigo-700" />,
-    category: "Backend",
-  },
-  // Database
-  {
-    name: "SQLite",
-    icon: <SiSqlite className="text-blue-400" />,
-    category: "Database",
-  },
-  {
-    name: "MySQL",
-    icon: <SiMysql className="text-blue-500" />,
-    category: "Database",
-  },
-  {
-    name: "PostgreSQL",
-    icon: <SiPostgresql className="text-blue-900" />,
-    category: "Database",
-  },
-  // Tools
-  {
-    name: "Git",
-    icon: <FaGit className="text-orange-600" />,
-    category: "Tools",
-  },
-  {
-    name: "GitHub",
-    icon: <FaGithub className="text-gray-800" />,
-    category: "Tools",
-  },
-  // Mobile
-  {
-    name: "Flutter",
-    icon: <SiFlutter className="text-blue-400" />,
-    category: "Mobile",
-  },
-  // Programming Languages (mapped logically)
-  {
-    name: "C#",
-    icon: <SiSharp className="text-purple-700" />,
-    category: "Backend",
-  },
-  {
-    name: "Java",
-    icon: <FaJava className="text-orange-600" />,
-    category: "Backend",
-  },
-];
+const skillIconMap: Record<string, React.ReactNode> = {
+  css: <FaCss3Alt className="text-blue-500" />,
+  html: <FaHtml5 className="text-orange-500" />,
+  js: <FaJs className="text-yellow-400" />,
+  nextjs: <SiNextdotjs className="text-black" />,
+  react: <FaReact className="text-cyan-400" />,
+  tailwind: <SiTailwindcss className="text-sky-400" />,
+  ts: <SiTypescript className="text-blue-600" />,
+  php: <FaPhp className="text-indigo-700" />,
+  sqlite: <SiSqlite className="text-blue-400" />,
+  mysql: <SiMysql className="text-blue-500" />,
+  postgres: <SiPostgresql className="text-blue-900" />,
+  git: <FaGit className="text-orange-600" />,
+  github: <FaGithub className="text-gray-800" />,
+  flutter: <SiFlutter className="text-blue-400" />,
+  csharp: <SiSharp className="text-purple-700" />,
+  java: <FaJava className="text-orange-600" />,
+};
+
+const allSkills = skillsData.map((s) => ({
+  name: s.name,
+  category: s.category as Exclude<Category, "All">,
+  icon: skillIconMap[s.icon] ?? <FaReact />,
+}));
 
 const Skills = () => {
   const [selected, setSelected] = useState<Category>("All");

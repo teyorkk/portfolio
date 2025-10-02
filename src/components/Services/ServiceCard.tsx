@@ -16,7 +16,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
     >
       <AccentBar />
       <div className="flex items-center gap-2.5">
-        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-50 shadow-inner transition-transform duration-200 group-hover:scale-105">
+        <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-100 shadow-inner transition-transform duration-200 group-hover:scale-105">
           <span className="text-xl sm:text-2xl transition-transform duration-200 group-hover:scale-110">
             {service.icon}
           </span>

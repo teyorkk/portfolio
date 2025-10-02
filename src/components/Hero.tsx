@@ -1,45 +1,56 @@
 import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import Reveal from "./Ui/Reveal";
 import { FaArrowDown } from "react-icons/fa";
 
-interface TypewriterTextProps {
-  text: string;
-  className?: string;
-}
-
-function TypewriterText({ text, className }: TypewriterTextProps) {
-  const [displayed, setDisplayed] = useState("");
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayed((prev) => prev + text[index]);
-        setIndex((prev) => prev + 1);
-      }, 35);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
-        setDisplayed("");
-        setIndex(0);
-      }, 1500);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, text]);
-  return (
-    <p className={className}>
-      {displayed}
-      <span aria-hidden="true" className="animate-pulse select-none">
-        |
-      </span>
-    </p>
-  );
-}
+const phrases = [
+  "I build modern, responsive web apps.",
+  "I love crafting accessible UI.",
+  "I integrate clean APIs & performant data layers.",
+];
 
 const Hero = () => {
   const [imgSrc, setImgSrc] = useState("/2.jpg");
   const cardRef = useRef<HTMLDivElement | null>(null);
   const lensRef = useRef<HTMLDivElement | null>(null);
   const [lensVisible, setLensVisible] = useState(false);
+  const phraseRef = useRef<HTMLParagraphElement | null>(null);
+  const phraseIndex = useRef(0);
+
+  useEffect(() => {
+    const el = phraseRef.current;
+    if (!el) return;
+    const showPhrase = (idx: number) => {
+      el.textContent = phrases[idx];
+      gsap.fromTo(
+        el,
+        { autoAlpha: 0, y: 12, filter: "blur(4px)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.6,
+          ease: "power3.out",
+          onComplete: () => {
+            gsap.to(el, {
+              autoAlpha: 0,
+              y: -8,
+              filter: "blur(6px)",
+              delay: 1.8,
+              duration: 0.5,
+              ease: "power2.in",
+              onComplete: () => {
+                phraseIndex.current =
+                  (phraseIndex.current + 1) % phrases.length;
+                showPhrase(phraseIndex.current);
+              },
+            });
+          },
+        }
+      );
+    };
+    showPhrase(phraseIndex.current);
+  }, []);
 
   useEffect(() => {
     const el = cardRef.current;
@@ -133,11 +144,9 @@ const Hero = () => {
               Hi, I'm <span className="text-gray-700">Moises</span>
             </h1>
 
-            <TypewriterText
-              text={
-                "I'm a passionate web developer specializing in building modern, responsive, and engaging web applications."
-              }
-              className="text-lg md:text-xl text-gray-700 mb-6 min-h-[56px]"
+            <p
+              ref={phraseRef}
+              className="text-lg md:text-xl text-gray-700 min-h-[56px] font-medium"
             />
 
             <a

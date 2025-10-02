@@ -1,21 +1,20 @@
 import Reveal from "./Ui/Reveal";
 import AccentBar from "./Ui/AccentBar";
-import { FaHeart, FaMusic, FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaMusic } from "react-icons/fa";
 import { getTrack } from "../lib/last-fm";
 import type { Track } from "../lib/last-fm";
 import { useEffect, useState } from "react";
 
 export const About = () => {
   const [track, setTrack] = useState<Track | null>(null);
-
   useEffect(() => {
-    const fetchTrack = async () => {
-      const track = await getTrack();
-      setTrack(track);
+    const load = async () => {
+      const t = await getTrack();
+      setTrack(t);
     };
-    fetchTrack();
-    const interval = setInterval(fetchTrack, 5000);
-    return () => clearInterval(interval);
+    load();
+    const int = setInterval(load, 8000);
+    return () => clearInterval(int);
   }, []);
 
   return (
@@ -47,63 +46,51 @@ export const About = () => {
                 </div>
               </div>
 
-              <div className="md:col-span-2 grid gap-4 content-start">
-                <div className="relative rounded-xl border border-gray-200 bg-gray-50 p-4 overflow-hidden">
+              <div className="md:col-span-2 flex flex-col gap-4">
+                <div className="relative rounded-2xl overflow-hidden aspect-square bg-gray-900 flex items-end justify-start group border border-gray-200 shadow-md ring-1 ring-black/5">
                   <AccentBar />
-                  <p className="text-sm text-gray-500">What I value:</p>
-                  <p className="mt-1 font-semibold text-gray-900 flex items-center gap-2">
-                    <FaHeart className="text-rose-500" /> Love • Knowledge •
-                    Growth
-                  </p>
-                </div>
-                {/* <div className="relative rounded-xl border border-gray-200 bg-gray-50 p-4 overflow-hidden">
-                  <AccentBar />
-                  <p className="text-sm text-gray-500">Last movie watched</p>
-
-                  <div className="mt-2 flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-white border flex items-center justify-center">
-                      <FaFilm className="text-gray-700" />
+                  {track?.image ? (
+                    <img
+                      src={track?.image}
+                      alt={track?.title || "Track Cover"}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 gap-3">
+                      <FaMusic className="w-14 h-14 opacity-70" />
+                      <span className="text-xs tracking-wide">Loading…</span>
                     </div>
-                    <div className="flex-1 text-gray-600 text-sm"></div>
-                  </div>
-                </div> */}
-                <div className="relative rounded-xl border border-gray-200 bg-gray-50 p-4 overflow-hidden">
-                  <AccentBar />
-                  <p className="text-sm text-gray-500 mb-2">
-                    {track?.nowPlaying
-                      ? "Now Listening to:"
-                      : "Last Listened to:"}
-                  </p>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-15 h-15 rounded-lg bg-gray-50 shadow-inner flex items-center justify-center overflow-hidden">
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+                  <div className="relative z-10 w-full p-4 flex flex-col">
+                    <div className="inline-block rounded-xl bg-black/55 px-4 py-2 shadow-lg ring-1 ring-white/10 max-w-full">
                       {track ? (
-                        <img
-                          src={track.image}
-                          className="w-12 h-12 rounded-lg object-fill"
-                          alt={track.title}
-                        />
-                      ) : (
-                        <FaMusic className="text-blue-500 text-lg" />
-                      )}
-                    </div>
-                    {track ? (
-                      <div className="flex flex-col">
                         <a
                           href={track.songUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group font-semibold text-gray-900 hover:underline flex items-center gap-1"
+                          className="text-sm md:text-base font-semibold text-white tracking-wide flex items-center gap-2 truncate"
+                          title={`${track.artist} - ${track.title}`}
                         >
-                          {track.title}
-                          <FaExternalLinkAlt className="ml-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                          <span className="truncate">
+                            {track.artist} - {track.title}
+                          </span>
+                          <FaExternalLinkAlt className="text-xs opacity-70 shrink-0" />
                         </a>
-                        <span className="text-sm text-gray-500 font-normal ml-0">
-                          {track.artist}
+                      ) : (
+                        <span className="text-sm text-gray-200">
+                          Loading track…
                         </span>
-                      </div>
-                    ) : (
-                      <span>Loading...</span>
+                      )}
+                    </div>
+                    {track && (
+                      <p className="mt-3 text-xs uppercase tracking-wide text-gray-300 font-medium">
+                        {track.nowPlaying
+                          ? "Now Listening to:"
+                          : "Last Listened to:"}
+                      </p>
                     )}
                   </div>
                 </div>

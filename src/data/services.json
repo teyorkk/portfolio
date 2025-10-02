@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Frontend Development",
+    "description": "Building responsive, accessible, and modern UIs with React, TypeScript, and Tailwind CSS.",
+    "icon": "react"
+  },
+  {
+    "title": "Backend & APIs",
+    "description": "Designing and integrating RESTful APIs, authentication, and server logic.",
+    "icon": "server"
+  },
+  {
+    "title": "Database Management",
+    "description": "Schema design, queries, and optimization for relational databases.",
+    "icon": "database"
+  }
+]

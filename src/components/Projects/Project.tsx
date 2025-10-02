@@ -1,28 +1,7 @@
 import ProjectCard from "./ProjectCard";
 import Reveal from "../Ui/Reveal";
-const projects = [
-  {
-    title: "Portfolio Website",
-    description: "A modern portfolio built with React and Tailwind CSS.",
-    image: "/port.png",
-    link: "https://github.com/teyorkk/portfolio",
-    tags: ["React", "Tailwind"],
-  },
-  {
-    title: "Expense Tracker",
-    description: "A mobile expense tracker app using flutter.",
-    image: "/expense.jpg",
-    link: "https://github.com/teyorkk/expense_tracker_flutter",
-    tags: ["Flutter", "SQLite"],
-  },
-  {
-    title: "Cineverse",
-    description: "A movie review logging website.",
-    image: "/cineverse.png",
-    link: "https://github.com/teyorkk/cineverse",
-    tags: ["MySQL", "PHP"],
-  },
-];
+import projectsData from "../../data/projects.json";
+const projects = projectsData;
 
 const Project = () => {
   return (

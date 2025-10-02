@@ -43,3 +43,41 @@ body {
 .hero-lens {
   pointer-events: none;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s both;
+}
+.animate-scaleIn {
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0.8, 0.3, 1) both;
+}
+.animate-slideUp {
+  animation: slideUp 0.5s cubic-bezier(0.4, 0.8, 0.3, 1) forwards;
+}

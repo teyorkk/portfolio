@@ -1,0 +1,18 @@
+[
+  { "name": "CSS3", "icon": "css", "category": "Frontend" },
+  { "name": "HTML5", "icon": "html", "category": "Frontend" },
+  { "name": "JavaScript", "icon": "js", "category": "Frontend" },
+  { "name": "Nextjs", "icon": "nextjs", "category": "Frontend" },
+  { "name": "React", "icon": "react", "category": "Frontend" },
+  { "name": "Tailwind CSS", "icon": "tailwind", "category": "Frontend" },
+  { "name": "TypeScript", "icon": "ts", "category": "Frontend" },
+  { "name": "PHP", "icon": "php", "category": "Backend" },
+  { "name": "SQLite", "icon": "sqlite", "category": "Database" },
+  { "name": "MySQL", "icon": "mysql", "category": "Database" },
+  { "name": "PostgreSQL", "icon": "postgres", "category": "Database" },
+  { "name": "Git", "icon": "git", "category": "Tools" },
+  { "name": "GitHub", "icon": "github", "category": "Tools" },
+  { "name": "Flutter", "icon": "flutter", "category": "Mobile" },
+  { "name": "C#", "icon": "csharp", "category": "Backend" },
+  { "name": "Java", "icon": "java", "category": "Backend" }
+]
