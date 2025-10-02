@@ -18,18 +18,18 @@ export const About = () => {
   }, []);
 
   return (
-    <section className="py-16" id="about">
-      <div className="max-w-5xl mx-auto px-4">
+    <section className="py-12 sm:py-16" id="about">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <Reveal>
           <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg border border-gray-200">
             <AccentBar />
 
-            <div className="relative p-6 sm:p-8 grid gap-8 md:grid-cols-5">
+            <div className="relative p-5 sm:p-8 grid gap-10 md:gap-8 md:grid-cols-5 items-start">
               <div className="md:col-span-3">
-                <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
+                <h2 className="mt-2 sm:mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                   About Me
                 </h2>
-                <div className="mt-5 space-y-3 text-gray-700 text-base sm:text-lg">
+                <div className="mt-5 space-y-4 text-gray-700 text-[15px] sm:text-base leading-relaxed">
                   <p>
                     Hey there! I’m Moises, a BSIT student who loves turning
                     ideas into real, usable products. I’m a big fan of
@@ -45,14 +45,17 @@ export const About = () => {
                   </p>
                 </div>
               </div>
-
-              <div className="md:col-span-2 flex flex-col gap-4">
-                <div className="relative rounded-2xl overflow-hidden aspect-square bg-gray-900 flex items-end justify-start group border border-gray-200 shadow-md ring-1 ring-black/5">
+              <div className="md:col-span-2 flex flex-col gap-4 max-w-sm w-full mx-auto md:mx-0">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[5/4] md:aspect-square bg-gray-900 flex items-end justify-start group border border-gray-200 shadow-md ring-1 ring-black/5">
                   <AccentBar />
                   {track?.image ? (
                     <img
                       src={track?.image}
-                      alt={track?.title || "Track Cover"}
+                      alt={
+                        track?.title
+                          ? `${track.artist} – ${track.title} cover`
+                          : "Track cover"
+                      }
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                       decoding="async"
@@ -64,20 +67,21 @@ export const About = () => {
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
-                  <div className="relative z-10 w-full p-4 flex flex-col">
-                    <div className="inline-block rounded-xl bg-black/55 px-4 py-2 shadow-lg ring-1 ring-white/10 max-w-full">
+                  <div className="relative z-10 w-full p-3 sm:p-4 flex flex-col">
+                    <div className="inline-block rounded-xl bg-black/55 backdrop-blur-sm px-3 sm:px-4 py-2 shadow-lg ring-1 ring-white/10 max-w-full">
                       {track ? (
                         <a
                           href={track.songUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm md:text-base font-semibold text-white tracking-wide flex items-center gap-2 truncate"
+                          className="text-xs sm:text-sm md:text-base font-semibold text-white tracking-wide flex items-center gap-2 truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40 rounded-lg"
                           title={`${track.artist} - ${track.title}`}
+                          aria-label={`Open Last.fm page for ${track.artist} - ${track.title}`}
                         >
                           <span className="truncate">
                             {track.artist} - {track.title}
                           </span>
-                          <FaExternalLinkAlt className="text-xs opacity-70 shrink-0" />
+                          <FaExternalLinkAlt className="text-[10px] sm:text-xs opacity-70 shrink-0" />
                         </a>
                       ) : (
                         <span className="text-sm text-gray-200">
@@ -86,7 +90,7 @@ export const About = () => {
                       )}
                     </div>
                     {track && (
-                      <p className="mt-3 text-xs uppercase tracking-wide text-gray-300 font-medium">
+                      <p className="mt-2 sm:mt-3 text-[10px] sm:text-xs uppercase tracking-wide text-gray-300 font-medium">
                         {track.nowPlaying
                           ? "Now Listening to:"
                           : "Last Listened to:"}
