@@ -131,7 +131,7 @@ export const Header = () => {
           <div className="md:hidden fixed inset-0 z-[60] flex items-start justify-center pt-20 px-4">
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-black/70 backdrop-blur-md animate-fadeIn"
+              className="absolute inset-0  animate-fadeIn"
               onClick={() => setMenuOpen(false)}
             />
             {/* Center Card */}
