@@ -44,6 +44,22 @@ const Contact = () => {
                   .VITE_EMAILJS_TEMPLATE_ID as string;
                 const publicKey = import.meta.env
                   .VITE_EMAILJS_PUBLIC_KEY as string;
+
+                if (!serviceId || !templateId || !publicKey) {
+                  // eslint-disable-next-line no-console
+                  console.error("EmailJS envs missing", {
+                    hasServiceId: Boolean(serviceId),
+                    hasTemplateId: Boolean(templateId),
+                    hasPublicKey: Boolean(publicKey),
+                    mode: import.meta.env.MODE,
+                  });
+                  window.alert(
+                    "Email service misconfigured. Please try again later."
+                  );
+                  setIsSubmitting(false);
+                  return;
+                }
+
                 await emailjs.send(
                   serviceId,
                   templateId,
@@ -52,8 +68,20 @@ const Contact = () => {
                 );
                 form.reset();
                 window.alert("Message sent successfully!");
-              } catch (_err) {
-                window.alert("Failed to send message. Please try again.");
+              } catch (err: unknown) {
+                // eslint-disable-next-line no-console
+                console.error("EmailJS send failed", err);
+                const message =
+                  err && typeof err === "object" && "text" in err
+                    ? (err as { text?: string }).text || ""
+                    : err instanceof Error
+                    ? err.message
+                    : "";
+                window.alert(
+                  message
+                    ? `Failed to send: ${message}`
+                    : "Failed to send message. Please try again."
+                );
               } finally {
                 setIsSubmitting(false);
                 setIsCooldown(true);
