@@ -28,26 +28,3 @@ export function getTrack(): Promise<Track | null> {
       return null;
     });
 }
-
-export function getRecentTracks(limit = 6): Promise<Track[]> {
-  const apiKey = import.meta.env.VITE_LASTFM_API_KEY;
-  const user = import.meta.env.VITE_LASTFM_USER;
-  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${user}&api_key=${apiKey}&format=json&limit=${limit}`;
-  return fetch(url)
-    .then((r) => r.json())
-    .then((data) => {
-      if (!data?.recenttracks?.track) return [];
-      return data.recenttracks.track.map((t: any) => {
-        const imgs = (t.image || []).filter((i: any) => i["#text"]);
-        const largest = imgs.length ? imgs[imgs.length - 1]["#text"] : "";
-        return {
-          artist: t.artist["#text"],
-          title: t.name,
-          image: largest,
-          nowPlaying: Boolean(t["@attr"] && t["@attr"].nowplaying === "true"),
-          songUrl: t.url,
-        } as Track;
-      });
-    })
-    .catch(() => []);
-}
