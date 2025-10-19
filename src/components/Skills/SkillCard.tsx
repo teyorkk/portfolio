@@ -10,13 +10,13 @@ interface SkillCardProps {
 const SkillCard = ({ icon, name, className = "" }: SkillCardProps) => {
   return (
     <div
-      className={`relative flex flex-col overflow-hidden items-center bg-white rounded-2xl shadow-xl border border-gray-200 p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${className}`}
+      className={`relative flex flex-col overflow-hidden items-center bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${className}`}
     >
       <AccentBar className="left-1 right-1 h-0.5 rounded-full" />
-      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gray-100 mb-4 shadow-inner">
+      <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-700 mb-4 shadow-inner">
         <span className="text-4xl">{icon}</span>
       </div>
-      <span className="text-lg font-semibold text-gray-800 tracking-wide">
+      <span className="text-lg font-semibold text-gray-800 dark:text-gray-200 tracking-wide">
         {name}
       </span>
     </div>

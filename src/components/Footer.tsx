@@ -4,7 +4,7 @@ import Reveal from "./Ui/Reveal";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-100 py-8 mt-10">
+    <footer className="w-full bg-gray-100 dark:bg-gray-800 py-8 mt-10 border-t border-gray-200 dark:border-gray-700">
       <div className="max-w-5xl mx-auto px-4 flex flex-col items-center gap-3">
         <Reveal className="flex flex-col items-center text-center">
           <div className="flex justify-center gap-4 mb-2">
@@ -12,7 +12,7 @@ const Footer = () => {
               href="https://github.com/teyorkk"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-700 text-2xl transition"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <FaGithub />
             </a>
@@ -20,7 +20,7 @@ const Footer = () => {
               href="https://www.facebook.com/AtienzaTheo"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-700 text-2xl transition"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <FaFacebook />
             </a>
@@ -28,7 +28,7 @@ const Footer = () => {
               href="https://www.instagram.com/teyorkk/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-700 text-2xl transition"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <FaInstagram />
             </a>
@@ -36,7 +36,7 @@ const Footer = () => {
               href="https://letterboxd.com/teyorkk/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-700 text-2xl transition"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <SiLetterboxd />
             </a>
@@ -44,15 +44,15 @@ const Footer = () => {
               href="https://www.last.fm/user/Theomaczz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-700 text-2xl transition"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <FaLastfm />
             </a>
           </div>
-          <div className="text-gray-600 text-sm mb-1">
+          <div className="text-gray-600 dark:text-gray-400 text-sm mb-1">
             Let's connect! Find me on social media or send me a message.
           </div>
-          <div className="text-gray-500 text-xs">
+          <div className="text-gray-500 dark:text-gray-500 text-xs">
             &copy; {new Date().getFullYear()} Moises Theo. All rights reserved.
           </div>
         </Reveal>

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { FaCookieBite } from "react-icons/fa";
+import { FaCookieBite, FaMoon, FaSun } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useTheme } from "../contexts/ThemeContext";
+import { useThemeToggle } from "../hooks/useThemeToggle";
 
 const navLinks = [
   { href: "#hero", label: "Home" },
@@ -16,7 +18,9 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState<string>("#hero");
   const rafRef = useRef<number | null>(null);
-  const [scrolled, setScrolled] = useState(0); // 0 -> top, 1 -> past threshold
+  const [scrolled, setScrolled] = useState(0);
+  const { theme, toggleTheme } = useTheme();
+  const { iconRef, isToggling, handleToggle } = useThemeToggle(toggleTheme);
   // Lock scroll when menu open
   useEffect(() => {
     if (menuOpen) {
@@ -75,6 +79,16 @@ export const Header = () => {
   const blur = (scrolled * 8).toFixed(2);
   const backdropOpacity = 0.6 + scrolled * 0.25;
   const borderOpacity = 0.15 + scrolled * 0.3;
+
+  const bgColor =
+    theme === "dark"
+      ? `rgba(31,41,55,${backdropOpacity})` // gray-800
+      : `rgba(255,255,255,${backdropOpacity})`;
+  const borderColor =
+    theme === "dark"
+      ? `rgba(255,255,255,${borderOpacity})`
+      : `rgba(0,0,0,${borderOpacity})`;
+
   return (
     <header className="pointer-events-none fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full flex justify-center px-4">
       <nav
@@ -82,29 +96,29 @@ export const Header = () => {
         style={{
           maxWidth: 960,
           width: "100%",
-          background: `rgba(255,255,255,${backdropOpacity})`,
+          background: bgColor,
           backdropFilter: `blur(${blur}px) saturate(${110 + scrolled * 40}%)`,
           WebkitBackdropFilter: `blur(${blur}px) saturate(${
             110 + scrolled * 40
           }%)`,
-          borderColor: `rgba(0,0,0,${borderOpacity})`,
+          borderColor: borderColor,
         }}
       >
-        <div className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+        <div className="text-xl font-semibold text-gray-900 dark:text-gray-100 flex items-center gap-2">
           <a href="#hero" className="flex items-center gap-2">
-            <FaCookieBite className="w-7 h-7 text-gray-800" />
+            <FaCookieBite className="w-7 h-7 text-gray-800 dark:text-gray-100" />
           </a>
         </div>
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-6 text-gray-800 font-medium">
+        <ul className="hidden md:flex gap-6 text-gray-800 dark:text-gray-200 font-medium">
           {navLinks.map((link) => {
             const isActive = active === link.href;
             const base =
-              "relative inline-block px-1 transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-black after:transition-all after:duration-200";
+              "relative inline-block px-1 transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:bg-black dark:after:bg-white after:transition-all after:duration-200";
             const cls = `${base} ${
               isActive
-                ? "text-black after:w-full"
-                : "text-gray-800 hover:text-black after:w-0 hover:after:w-full"
+                ? "text-black dark:text-white after:w-full"
+                : "text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white after:w-0 hover:after:w-full"
             }`;
             return (
               <li key={link.href}>
@@ -119,34 +133,53 @@ export const Header = () => {
             );
           })}
         </ul>
-        {/* Mobile trigger */}
-        <button
-          className="md:hidden ml-auto text-2xl text-gray-800 focus:outline-none z-50"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <FaBars />
-        </button>
+        {/* Theme Toggle Button & Mobile Menu */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleToggle}
+            disabled={isToggling}
+            className={`text-xl text-gray-800 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 rounded-lg p-2 ${
+              isToggling
+                ? "cursor-not-allowed"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
+            aria-label={`Switch to ${
+              theme === "light" ? "dark" : "light"
+            } mode`}
+          >
+            <div ref={iconRef} className="flex items-center justify-center">
+              {theme === "light" ? <FaMoon /> : <FaSun />}
+            </div>
+          </button>
+          {/* Mobile trigger */}
+          <button
+            className="md:hidden text-2xl text-gray-800 dark:text-gray-200 focus:outline-none z-50"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <FaBars />
+          </button>
+        </div>
         {/* Mobile Navigation Overlay */}
         {menuOpen && (
           <div className="md:hidden fixed inset-0 z-[60] flex items-start justify-center pt-20 px-4">
             {/* Backdrop */}
             <div
-              className="absolute inset-0  animate-fadeIn"
+              className="absolute inset-0 bg-black/50 dark:bg-black/70 animate-fadeIn"
               onClick={() => setMenuOpen(false)}
             />
             {/* Center Card */}
             <div className="relative w-full max-w-sm animate-scaleIn">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-white">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-white dark:bg-gray-800">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 via-cyan-400 to-pink-400" />
-                <div className="flex items-center justify-between px-5 py-4 border-b border-black/10">
-                  <div className="flex items-center gap-2 text-gray-900 font-semibold">
+                <div className="flex items-center justify-between px-5 py-4 border-b border-black/10 dark:border-white/10">
+                  <div className="flex items-center gap-2 text-gray-900 dark:text-gray-100 font-semibold">
                     <FaCookieBite className="w-6 h-6" /> Menu
                   </div>
                   <button
                     aria-label="Close menu"
                     onClick={() => setMenuOpen(false)}
-                    className="text-xl text-gray-700 hover:text-black"
+                    className="text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
                   >
                     <FaTimes />
                   </button>
@@ -169,8 +202,8 @@ export const Header = () => {
                             }}
                             className={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-colors border ${
                               isActive
-                                ? "bg-gray-900 text-white border-gray-900"
-                                : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                                ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border-gray-900 dark:border-gray-100"
+                                : "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-600"
                             }`}
                           >
                             {link.label}
@@ -180,9 +213,9 @@ export const Header = () => {
                     })}
                   </ul>
                 </nav>
-                <div className="px-6 pb-5 pt-2 text-[11px] text-gray-500 flex items-center gap-2">
+                <div className="px-6 pb-5 pt-2 text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-2">
                   <span>© {new Date().getFullYear()} Moises</span>
-                  <span className="inline-block w-1 h-1 rounded-full bg-gray-400" />
+                  <span className="inline-block w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-500" />
                   <span className="tracking-wide uppercase">v1</span>
                 </div>
               </div>

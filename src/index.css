@@ -1,11 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 475px;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
 html {
   scroll-behavior: smooth;
 }
-@import "tailwindcss";
 
 body {
   caret-color: transparent;
+  @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300;
 }
+
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
