@@ -33,7 +33,6 @@ const ProjectCard = ({
   title,
   description,
   image,
-  link,
   tags = [],
   onClick,
 }: ProjectCardProps) => {
