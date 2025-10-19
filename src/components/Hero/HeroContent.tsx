@@ -44,7 +44,7 @@ const HeroContent = () => {
       </div>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-8">
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
         <a
           href="#projects"
           className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-gray-900 dark:hover:bg-gray-100 transition-all duration-300 hover:-translate-y-0.5"

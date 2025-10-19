@@ -60,7 +60,7 @@ const ProfileImage = () => {
   return (
     <div
       ref={cardRef}
-      className="group w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-white dark:bg-gray-800 rounded-2xl shadow-xl flex items-center justify-center overflow-hidden border-4 border-gray-200 dark:border-gray-700 relative will-change-transform transition-all duration-500 hover:-rotate-1 hover:scale-[1.02] cursor-pointer"
+      className="group w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-white dark:bg-gray-800 rounded-2xl shadow-xl flex items-center justify-center overflow-hidden relative will-change-transform transition-all duration-500 hover:-rotate-1 hover:scale-[1.02] cursor-pointer"
     >
       {/* Glow ring */}
       <div
