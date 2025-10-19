@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import CertificationCard, { type Certification } from "./CertificationCard";
 import data from "../../data/certifications.json";
