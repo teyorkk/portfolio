@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Microsoft Access Certification",
+    "issuer": "La Consolacion University Philippines",
+    "date": "2025",
+    "image": "/access.png",
+    "link": "https://learn.microsoft.com/en-us/credentials/certifications/mos-access-expert-2019/?practice-assessment-type=certification"
+  },
+
+  {
+    "title": "ITS Cloud Computing",
+    "issuer": "Innovative Training (I.T.) Works, Inc.",
+    "date": "2025",
+    "image": "/its.png",
+    "link": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Certify.aspx"
+  },
+  {
+    "title": "Microsoft Excel Certification",
+    "issuer": "La Consolacion University Philippines",
+    "date": "2023",
+    "image": "/excel.png",
+    "link": "https://learn.microsoft.com/en-us/credentials/certifications/mos-excel-2019/?practice-assessment-type=certification"
+  }
+]

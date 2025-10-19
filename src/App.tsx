@@ -5,6 +5,7 @@ import Project from "./components/Projects/Project";
 import Contact from "./components/Contact";
 import BackgroundEffects from "./components/Ui/BackgroundEffects";
 import Services from "./components/Services/Services";
+import Certifications from "./components/Certifications/Certifications";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <About />
       <Services />
+      <Certifications />
       <Skills />
       <Project />
       <Contact />

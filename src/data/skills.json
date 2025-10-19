@@ -4,7 +4,7 @@
   { "name": "JavaScript", "icon": "js", "category": "Frontend" },
   { "name": "Nextjs", "icon": "nextjs", "category": "Frontend" },
   { "name": "React", "icon": "react", "category": "Frontend" },
-  { "name": "Tailwind CSS", "icon": "tailwind", "category": "Frontend" },
+  { "name": "Tailwind", "icon": "tailwind", "category": "Frontend" },
   { "name": "TypeScript", "icon": "ts", "category": "Frontend" },
   { "name": "PHP", "icon": "php", "category": "Backend" },
   { "name": "SQLite", "icon": "sqlite", "category": "Database" },
