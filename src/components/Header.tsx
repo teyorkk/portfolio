@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { FaCookieBite, FaMoon, FaSun } from "react-icons/fa";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useTheme } from "../contexts/ThemeContext";
@@ -160,12 +161,19 @@ export const Header = () => {
             <FaBars />
           </button>
         </div>
-        {/* Mobile Navigation Overlay */}
-        {menuOpen && (
-          <div className="md:hidden fixed inset-0 z-[60] flex items-start justify-center pt-20 px-4">
-            {/* Backdrop */}
+      </nav>
+
+      {/* Mobile Navigation Overlay - Rendered via Portal */}
+      {menuOpen &&
+        createPortal(
+          <div className="md:hidden fixed inset-0 z-[999] flex items-start justify-center pt-20 px-4 animate-fadeIn">
+            {/* Backdrop with Blur */}
             <div
-              className="absolute inset-0 bg-black/50 dark:bg-black/70 animate-fadeIn"
+              className="absolute inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md"
+              style={{
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+              }}
               onClick={() => setMenuOpen(false)}
             />
             {/* Center Card */}
@@ -179,7 +187,7 @@ export const Header = () => {
                   <button
                     aria-label="Close menu"
                     onClick={() => setMenuOpen(false)}
-                    className="text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
+                    className="text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <FaTimes />
                   </button>
@@ -214,15 +222,13 @@ export const Header = () => {
                   </ul>
                 </nav>
                 <div className="px-6 pb-5 pt-2 text-[11px] text-gray-500 dark:text-gray-400 flex items-center gap-2">
-                  <span>© {new Date().getFullYear()} Moises</span>
-                  <span className="inline-block w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-500" />
-                  <span className="tracking-wide uppercase">v1</span>
+                  <span>© Moises Theo Atienza</span>
                 </div>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
-      </nav>
     </header>
   );
 };
