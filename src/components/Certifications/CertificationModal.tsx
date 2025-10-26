@@ -24,24 +24,24 @@ const CertificationModal = ({
   skills = [],
 }: CertificationModalProps) => {
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-4 sm:p-6">
       {/* Certificate Image */}
-      <div className="mb-6 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
+      <div className="mb-4 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
         <img
           src={image}
           alt={title}
-          className="w-full h-auto object-contain"
+          className="w-full h-auto max-h-[300px] sm:max-h-[500px] object-contain"
           decoding="async"
         />
       </div>
 
       {/* Title */}
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
         {title}
       </h2>
 
       {/* Issuer and Date */}
-      <div className="flex flex-wrap gap-4 mb-6 text-gray-600 dark:text-gray-400">
+      <div className="flex flex-wrap gap-4 mb-4 text-gray-600 dark:text-gray-400">
         <div className="flex items-center gap-2">
           <FaCertificate className="text-indigo-500" />
           <span className="font-medium">{issuer}</span>
@@ -54,15 +54,15 @@ const CertificationModal = ({
 
       {/* Description */}
       {description && (
-        <p className="text-gray-600 dark:text-gray-400 text-lg mb-6 leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg mb-4 leading-relaxed">
           {description}
         </p>
       )}
 
       {/* Skills */}
       {skills.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+        <div className="mb-4">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Skills Covered
           </h3>
           <div className="flex flex-wrap gap-2">
@@ -80,7 +80,7 @@ const CertificationModal = ({
 
       {/* Action Button */}
       {link && (
-        <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex gap-3 pt-3 border-t border-gray-200 dark:border-gray-700">
           <a
             href={link}
             target="_blank"

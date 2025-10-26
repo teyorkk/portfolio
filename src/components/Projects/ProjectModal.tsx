@@ -32,31 +32,35 @@ const ProjectModal = ({
         return "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-300 dark:border-orange-700";
       case "php":
         return "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 border-indigo-300 dark:border-indigo-700";
+      case "kotlin":
+        return "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-700";
+      case "firebase":
+        return "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border-yellow-300 dark:border-yellow-700";
       default:
         return "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600";
     }
   };
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="p-4 sm:p-6">
       {/* Project Image */}
-      <div className="mb-6 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
+      <div className="mb-4 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
         <img
           src={image}
           alt={title}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto max-h-[300px] sm:max-h-[650px] object-cover"
           decoding="async"
         />
       </div>
 
       {/* Title */}
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
         {title}
       </h2>
 
       {/* Tags */}
       {tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-3">
           {tags.map((tag) => (
             <span
               key={tag}
@@ -71,14 +75,14 @@ const ProjectModal = ({
       )}
 
       {/* Description */}
-      <p className="text-gray-600 dark:text-gray-400 text-lg mb-6 leading-relaxed">
+      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg mb-4 leading-relaxed">
         {description}
       </p>
 
       {/* Features */}
       {features.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+        <div className="mb-4">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
             Key Features
           </h3>
           <ul className="space-y-2">
@@ -96,7 +100,7 @@ const ProjectModal = ({
       )}
 
       {/* Action Buttons */}
-      <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="flex flex-wrap gap-3 pt-3 border-t border-gray-200 dark:border-gray-700">
         {link.includes("github") && (
           <a
             href={link}

@@ -24,6 +24,10 @@ const hoverClassesForTag = (tag: string) => {
       return "hover:bg-orange-500 hover:border-orange-500 hover:text-white";
     case "php":
       return "hover:bg-indigo-600 hover:border-indigo-600 hover:text-white";
+    case "kotlin":
+      return "hover:bg-purple-600 hover:border-purple-600 hover:text-white";
+    case "firebase":
+      return "hover:bg-yellow-600 hover:border-yellow-600 hover:text-white";
     default:
       return "hover:bg-gray-800 hover:border-gray-800 hover:text-white";
   }

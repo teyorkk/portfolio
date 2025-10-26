@@ -1,15 +1,15 @@
 [
   {
-    "title": "Portfolio Website",
+    "title": "My Portfolio Website",
     "description": "A modern portfolio built with React and Tailwind CSS.",
-    "image": "/port.png",
+    "image": "/portfolio.png",
     "link": "https://github.com/teyorkk/portfolio",
     "tags": ["React", "Tailwind"]
   },
   {
-    "title": "Expense Tracker",
+    "title": "Trackify",
     "description": "A mobile expense tracker app using flutter.",
-    "image": "/expense.jpg",
+    "image": "/trackify.png",
     "link": "https://github.com/teyorkk/expense_tracker_flutter",
     "tags": ["Flutter", "SQLite"]
   },
@@ -19,5 +19,12 @@
     "image": "/cineverse.png",
     "link": "https://github.com/teyorkk/cineverse",
     "tags": ["MySQL", "PHP"]
+  },
+  {
+    "title": "SocMedSS",
+    "description": "A social media app built with Kotlin and Firebase.",
+    "image": "/socmedss.png",
+    "link": "https://github.com/teyorkk/socmedss",
+    "tags": ["Kotlin", "Firebase"]
   }
 ]

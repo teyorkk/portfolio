@@ -69,7 +69,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     >
       <div
         ref={contentRef}
-        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl"
+        className="relative w-full sm:w-[90vw] md:w-[80vw] lg:w-[900px] max-w-5xl h-auto sm:max-h-[85vh] md:max-h-[85vh] lg:max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
