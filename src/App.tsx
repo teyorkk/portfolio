@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import BackgroundEffects from "./components/Ui/BackgroundEffects";
 import Services from "./components/Services/Services";
 import Certifications from "./components/Certifications/Certifications";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Skills />
       <Project />
       <Contact />
+      <ChatBot />
     </>
   );
 }

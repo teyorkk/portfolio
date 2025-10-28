@@ -18,10 +18,19 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiPostgresql,
+  SiKotlin,
+  SiFirebase,
 } from "react-icons/si";
 import SkillsFilter, { type Category } from "./SkillsFilter";
 import SkillsGrid from "./SkillsGrid";
 import skillsData from "../../data/skills.json";
+
+type SkillJson = {
+  name: string;
+  icon: string;
+  // Allow single or multiple categories in data
+  category: string | string[];
+};
 
 const skillIconMap: Record<string, React.ReactNode> = {
   css: <FaCss3Alt className="text-blue-500" />,
@@ -40,13 +49,25 @@ const skillIconMap: Record<string, React.ReactNode> = {
   flutter: <SiFlutter className="text-blue-400" />,
   csharp: <SiSharp className="text-purple-700" />,
   java: <FaJava className="text-orange-600" />,
+  kotlin: <SiKotlin className="text-orange-500" />,
+  firebase: <SiFirebase className="text-amber-500" />,
 };
 
-const allSkills = skillsData.map((s) => ({
-  name: s.name,
-  category: s.category as Exclude<Category, "All">,
-  icon: skillIconMap[s.icon] ?? <FaReact />,
-}));
+// Normalize categories to an array for filtering, keep icon and name for rendering
+const allSkills = (skillsData as unknown as SkillJson[]).map((s) => {
+  const cats: Exclude<Category, "All">[] = Array.isArray(s.category)
+    ? (s.category as string[]).filter((c): c is Exclude<Category, "All"> =>
+        ["Frontend", "Backend", "Database", "Tools", "Mobile"].includes(c)
+      )
+    : ([s.category] as string[]).filter((c): c is Exclude<Category, "All"> =>
+        ["Frontend", "Backend", "Database", "Tools", "Mobile"].includes(c)
+      );
+  return {
+    name: s.name,
+    categories: cats,
+    icon: skillIconMap[s.icon] ?? <FaReact />,
+  };
+});
 
 const Skills = () => {
   const [selected, setSelected] = useState<Category>("All");
@@ -55,8 +76,12 @@ const Skills = () => {
     const list =
       selected === "All"
         ? allSkills
-        : allSkills.filter((s) => s.category === selected);
-    return [...list].sort((a, b) => a.name.localeCompare(b.name));
+        : allSkills.filter((s) =>
+            s.categories.includes(selected as Exclude<Category, "All">)
+          );
+    // Map down to the shape SkillsGrid expects
+    const minimal = list.map(({ name, icon }) => ({ name, icon }));
+    return [...minimal].sort((a, b) => a.name.localeCompare(b.name));
   }, [selected]);
 
   return (
