@@ -1,4 +1,10 @@
-import { FaGithub, FaFacebook, FaInstagram, FaLastfm } from "react-icons/fa";
+import {
+  FaGithub,
+  FaFacebook,
+  FaInstagram,
+  FaLastfm,
+  FaCoffee,
+} from "react-icons/fa";
 import { SiLetterboxd } from "react-icons/si";
 import Reveal from "./Ui/Reveal";
 
@@ -47,6 +53,15 @@ const Footer = () => {
               className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
             >
               <FaLastfm />
+            </a>
+            <a
+              href="https://buymeacoffee.com/teyorkk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300 text-2xl transition"
+              title="Buy me a coffee"
+            >
+              <FaCoffee />
             </a>
           </div>
           <div className="text-gray-600 dark:text-gray-400 text-sm mb-1">
