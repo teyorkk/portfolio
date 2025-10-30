@@ -51,12 +51,6 @@ const HeroContent = () => {
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 mt-6">
         <a
-          href="#projects"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-gray-900 dark:hover:bg-gray-100 transition-all duration-300 hover:-translate-y-0.5"
-        >
-          View Projects <FaArrowDown className="text-sm" />
-        </a>
-        <a
           href="https://buymeacoffee.com/teyorkk"
           target="_blank"
           rel="noopener noreferrer"
@@ -64,6 +58,12 @@ const HeroContent = () => {
         >
           <FaCoffee className="text-lg" />
           Buy me a coffee
+        </a>
+        <a
+          href="#projects"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold shadow-lg hover:shadow-xl hover:bg-gray-900 dark:hover:bg-gray-100 transition-all duration-300 hover:-translate-y-0.5"
+        >
+          View Projects <FaArrowDown className="text-sm" />
         </a>
       </div>
     </div>
