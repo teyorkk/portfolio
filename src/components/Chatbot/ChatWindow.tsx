@@ -22,7 +22,7 @@ const ChatWindow = ({
       aria-label={ariaLabel}
       aria-hidden={!isOpen}
     >
-      <AccentBar />
+      <AccentBar className="left-1 right-1 h-0.5 rounded-t-xl" />
       {children}
     </div>
   );

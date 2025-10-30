@@ -1,10 +1,4 @@
-type Category =
-  | "All"
-  | "Frontend"
-  | "Backend"
-  | "Database"
-  | "Tools"
-  | "Mobile";
+type Category = "Frontend" | "Backend" | "Database" | "Tools" | "Mobile";
 
 interface SkillsFilterProps {
   selected: Category;
@@ -12,7 +6,6 @@ interface SkillsFilterProps {
 }
 
 const categories: Category[] = [
-  "All",
   "Frontend",
   "Backend",
   "Database",

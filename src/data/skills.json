@@ -18,5 +18,7 @@
     "category": ["Backend", "Database", "Tools"]
   },
   { "name": "C#", "icon": "csharp", "category": "Backend" },
+  { "name": "N8N", "icon": "n8n", "category": "Tools" },
+
   { "name": "Java", "icon": "java", "category": ["Backend", "Mobile"] }
 ]

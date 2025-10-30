@@ -15,7 +15,7 @@
   },
   {
     "title": "Cineverse",
-    "description": "A movie review logging website.",
+    "description": "A movie review logging website using php.",
     "image": "/cineverse.png",
     "link": "https://github.com/teyorkk/cineverse",
     "tags": ["MySQL", "PHP"]
@@ -26,5 +26,12 @@
     "image": "/socmedss.png",
     "link": "https://github.com/teyorkk/socmedss",
     "tags": ["Kotlin", "Firebase"]
+  },
+  {
+    "title": "CineMood",
+    "description": "A mood base movie recommendation website built with Next.js and N8n automation.",
+    "image": "/cinemood.png",
+    "link": "https://github.com/teyorkk/cinemood",
+    "tags": ["Next.js", "N8n", "Tailwind"]
   }
 ]

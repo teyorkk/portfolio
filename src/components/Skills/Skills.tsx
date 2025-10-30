@@ -20,6 +20,7 @@ import {
   SiPostgresql,
   SiKotlin,
   SiFirebase,
+  SiN8N,
 } from "react-icons/si";
 import SkillsFilter, { type Category } from "./SkillsFilter";
 import SkillsGrid from "./SkillsGrid";
@@ -51,6 +52,7 @@ const skillIconMap: Record<string, React.ReactNode> = {
   java: <FaJava className="text-orange-600" />,
   kotlin: <SiKotlin className="text-orange-500" />,
   firebase: <SiFirebase className="text-amber-500" />,
+  n8n: <SiN8N className="text-pink-500" />,
 };
 
 // Normalize categories to an array for filtering, keep icon and name for rendering
@@ -70,15 +72,13 @@ const allSkills = (skillsData as unknown as SkillJson[]).map((s) => {
 });
 
 const Skills = () => {
-  const [selected, setSelected] = useState<Category>("All");
+  // Start on Frontend by default (no "All" tab)
+  const [selected, setSelected] = useState<Category>("Frontend");
 
   const filtered = useMemo(() => {
-    const list =
-      selected === "All"
-        ? allSkills
-        : allSkills.filter((s) =>
-            s.categories.includes(selected as Exclude<Category, "All">)
-          );
+    const list = allSkills.filter((s) =>
+      s.categories.includes(selected as Exclude<Category, "All">)
+    );
     // Map down to the shape SkillsGrid expects
     const minimal = list.map(({ name, icon }) => ({ name, icon }));
     return [...minimal].sort((a, b) => a.name.localeCompare(b.name));
