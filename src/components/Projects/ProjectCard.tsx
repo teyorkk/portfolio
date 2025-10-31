@@ -1,4 +1,5 @@
 import AccentBar from "../Ui/AccentBar";
+import { getTagHoverClasses } from "../../lib/tagStyles";
 interface ProjectCardProps {
   title: string;
   description: string;
@@ -8,49 +9,7 @@ interface ProjectCardProps {
   onClick?: () => void;
 }
 
-const hoverClassesForTag = (tag: string) => {
-  const key = tag.trim().toLowerCase();
-  switch (key) {
-    case "n8n":
-      return "hover:bg-pink-600 hover:border-pink-600 hover:text-white";
-    case "sqlite":
-      return "hover:bg-cyan-600 hover:border-cyan-600 hover:text-white";
-    case "react":
-      return "hover:bg-cyan-600 hover:border-cyan-600 hover:text-white";
-    case "tailwind":
-    case "tailwind css":
-      return "hover:bg-sky-600 hover:border-sky-600 hover:text-white";
-    case "flutter":
-      return "hover:bg-blue-600 hover:border-blue-600 hover:text-white";
-    case "mysql":
-      return "hover:bg-orange-500 hover:border-orange-500 hover:text-white";
-    case "php":
-      return "hover:bg-indigo-600 hover:border-indigo-600 hover:text-white";
-    case "typescript":
-    case "ts":
-      return "hover:bg-blue-600 hover:border-blue-600 hover:text-white";
-    case "nextjs":
-      return "hover:bg-gray-900 hover:border-gray-900 hover:text-white";
-    case "postgres":
-    case "postgresql":
-      return "hover:bg-blue-800 hover:border-blue-800 hover:text-white";
-    case "java":
-      return "hover:bg-orange-600 hover:border-orange-600 hover:text-white";
-    case "c#":
-    case "csharp":
-      return "hover:bg-purple-700 hover:border-purple-700 hover:text-white";
-    case "git":
-      return "hover:bg-orange-600 hover:border-orange-600 hover:text-white";
-    case "github":
-      return "hover:bg-gray-900 hover:border-gray-900 hover:text-white";
-    case "kotlin":
-      return "hover:bg-purple-600 hover:border-purple-600 hover:text-white";
-    case "firebase":
-      return "hover:bg-yellow-600 hover:border-yellow-600 hover:text-white";
-    default:
-      return "hover:bg-gray-800 hover:border-gray-800 hover:text-white";
-  }
-};
+const hoverClassesForTag = (tag: string) => getTagHoverClasses(tag);
 
 const ProjectCard = ({
   title,

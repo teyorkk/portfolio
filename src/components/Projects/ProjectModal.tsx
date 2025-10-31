@@ -1,4 +1,5 @@
 import { FaGithub } from "react-icons/fa";
+import { getTagBadgeClasses } from "../../lib/tagStyles";
 
 interface ProjectModalProps {
   title: string;
@@ -17,29 +18,7 @@ const ProjectModal = ({
   tags = [],
   features = [],
 }: ProjectModalProps) => {
-  const tagColors = (tag: string) => {
-    const key = tag.trim().toLowerCase();
-    switch (key) {
-      case "sqlite":
-      case "react":
-        return "bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-400 border-cyan-300 dark:border-cyan-700";
-      case "tailwind":
-      case "tailwind css":
-        return "bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400 border-sky-300 dark:border-sky-700";
-      case "flutter":
-        return "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-blue-700";
-      case "mysql":
-        return "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-orange-300 dark:border-orange-700";
-      case "php":
-        return "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 border-indigo-300 dark:border-indigo-700";
-      case "kotlin":
-        return "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-700";
-      case "firebase":
-        return "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border-yellow-300 dark:border-yellow-700";
-      default:
-        return "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600";
-    }
-  };
+  const tagColors = (tag: string) => getTagBadgeClasses(tag);
 
   return (
     <div className="p-4 sm:p-6">
