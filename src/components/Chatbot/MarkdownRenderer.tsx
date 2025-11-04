@@ -36,14 +36,13 @@ export const MarkdownRenderer = ({ text }: { text: string }) => {
   useEffect(() => {
     let mounted = true;
     // Dynamically import heavy markdown libs to split them into a separate chunk
-    Promise.all([
-      import("react-markdown"),
-      import("remark-gfm"),
-    ]).then(([md, gfmMod]) => {
-      if (!mounted) return;
-      setMarkdownMod(() => md.default || md);
-      setGfm(() => gfmMod.default || gfmMod);
-    });
+    Promise.all([import("react-markdown"), import("remark-gfm")]).then(
+      ([md, gfmMod]) => {
+        if (!mounted) return;
+        setMarkdownMod(() => md.default || md);
+        setGfm(() => gfmMod.default || gfmMod);
+      }
+    );
     return () => {
       mounted = false;
     };
@@ -63,7 +62,10 @@ export const MarkdownRenderer = ({ text }: { text: string }) => {
 
   return (
     <div className="markdown text-base sm:text-[17px] leading-relaxed break-words [&>p]:mb-2 [&>ul]:list-disc [&>ol]:list-decimal [&>ul]:pl-5 [&>ol]:pl-5 [&>h1]:text-xl [&>h2]:text-lg [&>h3]:text-base [&>h1,h2,h3]:font-semibold [&>h1,h2,h3]:mt-2 [&>h1,h2,h3]:mb-1 [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:bg-black/10 dark:[&_code]:bg-white/10">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={markdownComponents}
+      >
         {text}
       </ReactMarkdown>
     </div>

@@ -1,11 +1,19 @@
 [
-  { "name": "JavaScript", "icon": "js", "category": ["Frontend", "Tools"] },
-  { "name": "Nextjs", "icon": "nextjs", "category": ["Frontend", "Tools"] },
+  { "name": "JavaScript", "icon": "js", "category": ["Frontend"] },
+  {
+    "name": "Nextjs",
+    "icon": "nextjs",
+    "category": ["Frontend", "Backend", "Tech Stack"]
+  },
   { "name": "React", "icon": "react", "category": "Frontend" },
-  { "name": "Tailwind", "icon": "tailwind", "category": ["Frontend", "Tools"] },
-  { "name": "TypeScript", "icon": "ts", "category": ["Frontend", "Tools"] },
+  {
+    "name": "Tailwind",
+    "icon": "tailwind",
+    "category": ["Frontend", "Tech Stack"]
+  },
+  { "name": "TypeScript", "icon": "ts", "category": ["Frontend"] },
   { "name": "PHP", "icon": "php", "category": "Backend" },
-  { "name": "SQLite", "icon": "sqlite", "category": ["Database", "Mobile"] },
+  { "name": "SQLite", "icon": "sqlite", "category": ["Database"] },
   { "name": "MySQL", "icon": "mysql", "category": "Database" },
   { "name": "PostgreSQL", "icon": "postgres", "category": "Database" },
   { "name": "Git", "icon": "git", "category": "Tools" },
@@ -17,7 +25,11 @@
     "icon": "firebase",
     "category": ["Backend", "Database", "Tools"]
   },
-  { "name": "C#", "icon": "csharp", "category": "Backend" },
+  {
+    "name": "Supabase",
+    "icon": "supabase",
+    "category": ["Backend", "Database", "Tools", "Tech Stack"]
+  },
   { "name": "N8N", "icon": "n8n", "category": "Tools" },
 
   { "name": "Java", "icon": "java", "category": ["Backend", "Mobile"] }

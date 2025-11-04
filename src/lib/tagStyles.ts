@@ -54,6 +54,11 @@ const TAG_STYLES: Record<string, TagStyle> = {
       "bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-400 border-pink-300 dark:border-pink-700",
     hover: "hover:bg-pink-600 hover:border-pink-600 hover:text-white",
   },
+  supabase: {
+    badge:
+      "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-700",
+    hover: "hover:bg-emerald-600 hover:border-emerald-600 hover:text-white",
+  },
   typescript: {
     badge:
       "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-blue-700",

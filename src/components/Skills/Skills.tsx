@@ -21,6 +21,7 @@ import {
   SiKotlin,
   SiFirebase,
   SiN8N,
+  SiSupabase,
 } from "react-icons/si";
 import SkillsFilter, { type Category } from "./SkillsFilter";
 import SkillsGrid from "./SkillsGrid";
@@ -53,16 +54,31 @@ const skillIconMap: Record<string, React.ReactNode> = {
   kotlin: <SiKotlin className="text-orange-500" />,
   firebase: <SiFirebase className="text-amber-500" />,
   n8n: <SiN8N className="text-pink-500" />,
+  supabase: <SiSupabase className="text-emerald-500" />,
 };
 
 // Normalize categories to an array for filtering, keep icon and name for rendering
 const allSkills = (skillsData as unknown as SkillJson[]).map((s) => {
   const cats: Exclude<Category, "All">[] = Array.isArray(s.category)
     ? (s.category as string[]).filter((c): c is Exclude<Category, "All"> =>
-        ["Frontend", "Backend", "Database", "Tools", "Mobile"].includes(c)
+        [
+          "Frontend",
+          "Backend",
+          "Database",
+          "Tools",
+          "Mobile",
+          "Tech Stack",
+        ].includes(c)
       )
     : ([s.category] as string[]).filter((c): c is Exclude<Category, "All"> =>
-        ["Frontend", "Backend", "Database", "Tools", "Mobile"].includes(c)
+        [
+          "Frontend",
+          "Backend",
+          "Database",
+          "Tools",
+          "Mobile",
+          "Tech Stack",
+        ].includes(c)
       );
   return {
     name: s.name,
@@ -72,8 +88,8 @@ const allSkills = (skillsData as unknown as SkillJson[]).map((s) => {
 });
 
 const Skills = () => {
-  // Start on Frontend by default (no "All" tab)
-  const [selected, setSelected] = useState<Category>("Frontend");
+  // Start on Tech Stack by default (no "All" tab)
+  const [selected, setSelected] = useState<Category>("Tech Stack");
 
   const filtered = useMemo(() => {
     const list = allSkills.filter((s) =>
